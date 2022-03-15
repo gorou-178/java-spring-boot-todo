@@ -1,19 +1,14 @@
-# TODO App
+# SpringBoot Todo Application
 
 ## Description
 - Spring Boot Todo Application
+- For SpringBoot learning
+- Certification and authorization, CURD, unit test, and code style checks are performed.
+- Tymeleaf is aware of partitioning
+- Customize from default SpringSecurity for DB relationship
+  - Customization to add id to users
+  - I want to make the implementation a little simpler (same for unit test)
+- Use checkstyle for code style checking
+  - I used the following
+  - https://github.com/spring-io/spring-javaformat/blob/main/src/checkstyle/checkstyle.xml
 
-## メモ
-- / -> top page
-- /login -> login page
-- /logout -> logout page
-  - redirect to /
-- /{user_id}/todos/
-  - ?filter=all or completed
-  - ?sort=createdAt or updatedAt
-  - ?order=asc or desc
-- /{user_id}/todos/create
-- /{user_id}/todos/{todo_id}/edit
-- /{user_id}/todos/{todo_id}/update
-- /{user_id}/todos/{todo_id}/completed
-- /{user_id}/todos/{todo_id}/delete
