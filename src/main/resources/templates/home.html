@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="base :: meta_header('Home', ~{::link}, ~{::script})">
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+    <h2>Home</h2>
+    <th:block th:if="${!#strings.isEmpty(infoMessage)}">
+      <p th:text="${infoMessage}"></p>
+    </th:block>
+    <ul>
+      <li><a th:href="@{/user/signup}">新規登録</a></li>
+      <div th:if="${!isLogin}">
+        <li><a th:href="@{/login}">ログイン</a></li>
+      </div>
+      <div th:if="${isLogin}">
+        <form th:action="@{/logout}" method="post">
+          <button class="logout-button">
+            ログアウト
+          </button>
+        </form>
+      </div>
+    </ul>
+</body>
+</html>

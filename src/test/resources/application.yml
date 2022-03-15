@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: test
+    password:
+  sql:
+    init:
+      enabled: true
+      mode: always
+      schema-locations:
+        - classpath:db/migrations/V1_001__create_user_table.sql
+        - classpath:db/migrations/V1_002__create_todos_table.sql
+      data-locations: classpath:data.sql
+      encoding: utf-8
+  flyway:
+    enable: false

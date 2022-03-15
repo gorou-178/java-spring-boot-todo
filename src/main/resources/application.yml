@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:todo_app;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE
+    username: developer
+    password: RootPass_1
+  sql:
+    init:
+      enabled: true
+      mode: always
+      schema-locations:
+        - classpath:db/migrations/V1_001__create_user_table.sql
+        - classpath:db/migrations/V1_002__create_todos_table.sql
+      data-locations: classpath:data.sql
+      encoding: utf-8
+  mvc:
+    format:
+      date-time: iso
+  thymeleat:
+    cache: false
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+logging:
+  level:
+    com:
+      example:
+        app: DEBUG
+    org:
+      springframework:
+        security: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+          EnumType: trace

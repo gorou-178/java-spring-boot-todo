@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="base :: meta_header('Todos', ~{::link}, ~{::script})">
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+    <h2>Todos</h2>
+    <th:block th:if="${!#strings.isEmpty(infoMessage)}">
+      <p th:text="${infoMessage}"></p>
+    </th:block>
+
+    <div>
+      <form th:action="@{/logout}" method="post">
+        <button class="logout-button">
+          ログアウト
+        </button>
+      </form>
+    </div>
+
+    <a th:href="@{'/todos/create'}">Todo追加</a>
+    <p th:text="${userName} + 'さん(id: ' + ${userId} + ')のタスク一覧'"></p>
+    <table>
+      <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Action</th>
+      </tr>
+      <tr th:each="todo : ${todos}" th:object="${todo}">
+          <td th:text="*{id}"></td>
+          <td th:text="*{title}"></td>
+          <td><a th:href="@{/todos/edit/{id}(id=*{id})}">編集</a></td>
+      </tr>
+    </table>
+</body>
+</html>

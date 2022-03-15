@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="base :: meta_header('Edit Todo', ~{::link}, ~{::script})">
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+    <h2>Edit Todo</h2>
+
+    <form action="#" th:action="@{'/todos/edit/' + ${todo.id}}" th:object="${todoForm}" method="post">
+      <table>
+          <tr>
+            <td>Title:</td>
+            <td><input type="text" th:field="${todo.title}" /></td>
+            <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title Error</td>
+        </tr>
+          <tr>
+              <td><button type="submit">Submit</button></td>
+          </tr>
+      </table>
+  </form>
+
+</body>
+</html>
